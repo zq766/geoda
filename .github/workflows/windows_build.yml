@@ -28,13 +28,13 @@ jobs:
     strategy:
       matrix:
         include:
-          - VS_VERSION: Visual Studio 16
-            VS_VER: 2019
-            MSVC_VER: 1920
+          - VS_VERSION: Visual Studio 17
+            VS_VER: 2022
+            MSVC_VER: 1930
             platform: x64
-          - VS_VERSION: Visual Studio 16
-            VS_VER: 2019
-            MSVC_VER: 1920
+          - VS_VERSION: Visual Studio 17
+            VS_VER: 2022
+            MSVC_VER: 1930
             platform: x86
 
     env:
@@ -75,7 +75,7 @@ jobs:
       - name: Set compiler environment
         shell: cmd
         run: |
-          if "%VS_VER%" == "2019" CALL "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -arch=%ARCHITECTURE%
+          if "%VS_VER%" == "2022" CALL "D:\visual studio\Common7\Tools\VsDevCmd.bat" -arch=%ARCHITECTURE%
           echo ::set-env name=PATH::%PATH%
           echo ::set-env name=INCLUDE::%INCLUDE%
           echo ::set-env name=LIB::%LIB%
@@ -113,7 +113,7 @@ jobs:
           # install pscx powershell and vSSetup
           Install-Module Pscx -AllowClobber
           Install-Module VSSetup -Scope CurrentUser
-          if($env:VS_VER -eq "2019")
+          if($env:VS_VER -eq "2022")
           {
           }
           else
